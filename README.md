@@ -46,6 +46,7 @@ deformable_cbf/force.py      one linear row, F_max^2 - ||F||^2, K in N/mm
 deformable_cbf/tracker.py    containing ellipsoid of an (N, 3) vertex array
 deformable_cbf/nominal.py    attractor, tangent slide, occlusion replan
 deformable_cbf/bench.py      hover and crossing episodes
+deformable_cbf/core/          metres: vision extrapolator, phase margin, speed box
 deformable_cbf/envs/scene_cfg.py
 ```
 
@@ -63,6 +64,8 @@ pytest
 python -m deformable_cbf.bench
 ```
 
-## Not in this commit
+## Vision gap and phase margin
 
-Actuator torque limits, a margin that changes with surgical phase, and a predictor that bridges a 30 Hz vision frame to the 100 Hz command. Those are the next gaps. This filter assumes the ellipsoid state at the control tick is already known.
+`deformable_cbf/core` is in metres. A dropped frame (confidence at or below 0.4) leaves the last accepted state in place and integrates `ÿ + γ ẏ + ω² y = 0` for at most 200 ms. Each 100 ms of that gap adds 0.5 mm to the margin. Switching to hemostasis moves the position margin from 1.0 mm toward 0.3 mm over about 0.2 s; the Cartesian speed box is `|u| <= u_max`.
+
+Joint torque limits, a vision model that emits the phase, and an Isaac run are still outside this repository. The ellipsoid state at a control tick is the predictor output, not a finite-element mesh.
