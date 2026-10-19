@@ -1,0 +1,7 @@
+margin_mm: 1.0
+alpha: 8.0
+control_hz: 100
+u_max_mm_s: 40.0
+force_max_n: 3.0
+tissue_stiffness_n_per_mm: 0.5
+robust_confidence: 0.999

@@ -1,0 +1,80 @@
+{
+  "dt_s": 0.01,
+  "margin_mm": 1.0,
+  "radius_mm": 5.0,
+  "u_max_mm_s": 40.0,
+  "alpha": 8.0,
+  "trials": 8,
+  "seed": 0,
+  "hover": [
+    {
+      "name": "hover-static",
+      "min_clearance_mm": -0.25,
+      "violated": true,
+      "final_error_mm": NaN,
+      "reached": false,
+      "interventions": 31,
+      "mean_filter_us": 0.0
+    },
+    {
+      "name": "hover-tv",
+      "min_clearance_mm": 0.08348762375258545,
+      "violated": false,
+      "final_error_mm": NaN,
+      "reached": false,
+      "interventions": 40,
+      "mean_filter_us": 0.0
+    }
+  ],
+  "crossing": [
+    {
+      "strategy": "attractor",
+      "trials": 8,
+      "violations": 3,
+      "violation_rate": 0.375,
+      "reached": 5,
+      "success_rate": 0.625,
+      "min_clearance_mm": -0.9940801852848145,
+      "median_final_error_mm": 0.0006819299491489517,
+      "mean_filter_us": 0.0
+    },
+    {
+      "strategy": "static",
+      "trials": 8,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "reached": 8,
+      "success_rate": 1.0,
+      "min_clearance_mm": 0.8475399216142252,
+      "median_final_error_mm": 0.0006867102808054391,
+      "mean_filter_us": 482.5348750940369
+    },
+    {
+      "strategy": "tv",
+      "trials": 8,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "reached": 8,
+      "success_rate": 1.0,
+      "min_clearance_mm": 0.9568179047738843,
+      "median_final_error_mm": 0.0006838345181974668,
+      "mean_filter_us": 528.222041502886
+    },
+    {
+      "strategy": "tv-replan",
+      "trials": 8,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "reached": 8,
+      "success_rate": 1.0,
+      "min_clearance_mm": 0.9568179047738843,
+      "median_final_error_mm": 0.005077383598198397,
+      "mean_filter_us": 541.2367917476028
+    }
+  ],
+  "notes": [
+    "Kinematic single integrator. The sphere centre is prescribed, not simulated by FEM.",
+    "The nominal command is a saturated attractor, a tangent slide, and a hand-written replan.",
+    "Clearance is ||x - p|| - radius - margin after the tissue's Euler step."
+  ]
+}

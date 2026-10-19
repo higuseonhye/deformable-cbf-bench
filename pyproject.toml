@@ -1,0 +1,13 @@
+[project]
+name = "deformable-cbf-bench"
+version = "0.1.0"
+description = "Time-varying ellipsoidal control barrier for moving surgical no-go zones"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+test = ["pytest>=7.4"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
